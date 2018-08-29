@@ -4,20 +4,21 @@ Reference Architecture for Fieldlabs. This system is composed of docker images f
 
 ## project references
 
-[Camunda Business Process Engine](http://camunda.org)  
+[Camunda Business Process Engine](http://camunda.org)  [![Build Status](https://travis-ci.org/camunda/camunda-bpm-platform.svg?branch=master)](https://travis-ci.org/camunda/camunda-bpm-platform)  
 Workflow and Decision Automation Platform  
 Open source platform for workflow and decision automation that brings business users and software developers together.
 
-[GEMMA Zaken](https://github.com/sjefvanleeuwen/gemma-zaken)  
+[GEMMA Zaken](https://github.com/sjefvanleeuwen/gemma-zaken) [![Build Status](https://travis-ci.org/sjefvanleeuwen/gemma-zaken.svg?branch=master)](https://travis-ci.org/sjefvanleeuwen/gemma-zaken)  
 OpenAPI .NET Core test implementations for ZDS / Zaakgericht werken
 
-[SIGNALR Event Hub](https://github.com/sjefvanleeuwen/signalr-event-hub)  
+[SIGNALR Event Hub](https://github.com/sjefvanleeuwen/signalr-event-hub) 
+[![Build Status](https://travis-ci.org/sjefvanleeuwen/signalr-event-hub.svg?branch=master)](https://travis-ci.org/sjefvanleeuwen/signalr-event-hub)  
 Generic event hub mainly for front end signalling if an asycnhronous task has completed in the backend 
 
-[BRP Basis Registratie Personen](https://github.com/sjefvanleeuwen/openapi-brp-fake)  
+[BRP Basis Registratie Personen](https://github.com/sjefvanleeuwen/openapi-brp-fake)[![Build Status](https://travis-ci.org/sjefvanleeuwen/openapi-brp-fake.svg?branch=master)](https://travis-ci.org/sjefvanleeuwen/openapi-brp-fake)  
 Provides an OpenAPI service that serves a fake BRP (Basisregistratie Personen) implementation. The implementation will generate fake addresses, names based on random seed derived from a BSN (Burger Service Nummer / Social Security Number).
 
-[OpenXML Document Generator](https://github.com/sjefvanleeuwen/openxml-document-generator)  
+[OpenXML Document Generator](https://github.com/sjefvanleeuwen/openxml-document-generator)  ![travis build](https://travis-ci.com/sjefvanleeuwen/openxml-document-generator.svg?branch=master)  
 Generates documents from html into openxml standard.
 
 ## 5Layer Composition
