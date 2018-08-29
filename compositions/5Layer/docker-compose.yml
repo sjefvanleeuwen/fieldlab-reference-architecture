@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  # GEMMA ZDS Document Registratie OpenAPI
+  drc:
+    image: wigo4it/openapi-drc:alpha
+    hostname: zdc
+    ports:
+      - "5094:5094"
+  # GEMMA BRP Basis Registratie Personen OpenAPI (fake generator)
+  brp:
+    image: wigo4it/openapi-brp-fake
+    hostname: brp
+    ports:
+      - "5090:8080"
+  # Business Process Engine, Rule Engine and Case Management  
+  camunda:
+    image: camunda/camunda-bpm-platform:latest
+    hostname: camunda
+    ports:
+      - "8080:8080"
+  # Intelligent Text Processing, document generator
+  itp:
+    image: wigo4it/oxmldocgen-api
+    hostname: itp
+    ports:
+      - "5091:5091"
+  # SignalR Event hun, websocket event streaming
+  signalr-event-hub:
+    image: wigo4it/signalr-event-hub
+    hostname: signalr-event-hub
+    ports:
+      - "5051:5051"
