@@ -73,7 +73,13 @@ Creating 5layer_itp_1               ... done
 Creating 5layer_signalr-event-hub_1 ... done
 Creating 5layer_brp_1               ... done
 Creating 5layer_drc_1               ... done
-
+PS C:\Users\********\fieldlab-reference-architecture\compositions\5Layer> docker ps
+CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS              PORTS                              NAMES
+4c8fb39a9e86        wigo4it/openapi-drc:alpha             "dotnet drc.dll"         23 minutes ago      Up 23 minutes       0.0.0.0:5094->5094/tcp             5layer_drc_1
+d6b0e05d1cf6        wigo4it/signalr-event-hub             "dotnet signalr-even…"   23 minutes ago      Up 23 minutes       0.0.0.0:5051->5051/tcp             5layer_signalr-event-hub_1
+e207a43a1266        wigo4it/openapi-brp-fake              "dotnet Org.OpenAPIT…"   23 minutes ago      Up 23 minutes       0.0.0.0:5090->8080/tcp             5layer_brp_1
+0c2010d23fcc        camunda/camunda-bpm-platform:latest   "/sbin/tini -- ./cam…"   23 minutes ago      Up 23 minutes       8000/tcp, 0.0.0.0:8080->8080/tcp   5layer_camunda_1
+8af00b741dd8        wigo4it/oxmldocgen-api                "dotnet oxmldocgen-a…"   23 minutes ago      Up 23 minutes       0.0.0.0:5091->5091/tcp             5layer_itp_1
 ```
 
 ## Contributing
