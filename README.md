@@ -2,6 +2,11 @@
 
 Reference Architecture for Fieldlabs. This system is composed of docker images from other projects. Some of the images support generic design patterns, while others are exact implementations of standards. Together they form a working system.
 
+## Technical Overview
+Technical layers/overview of the docker images (in Dutch/Work in Progress:
+
+![5Layer](./doc/5layer.png)
+
 ## project references
 
 [Camunda Business Process Engine](http://camunda.org)  [![Build Status](https://travis-ci.org/camunda/camunda-bpm-platform.svg?branch=master)](https://travis-ci.org/camunda/camunda-bpm-platform)  
