@@ -9,7 +9,13 @@ Technical layers/overview of the docker images (in Dutch/Work in Progress):
 
 ## project references
 
+[Camunda Process Template](https://github.com/sjefvanleeuwen/camunda-process-template) 
+[![Build Status](https://travis-ci.org/sjefvanleeuwen/camunda-process-template.svg?branch=master)](https://travis-ci.org/sjefvanleeuwen/camunda-process-template)
 
+.NET Core console template that provides a harnas for deploying your BPMN flows as resources to Camunda and build external task workers.
+
+[Camunda Business Process Engine](http://camunda.org)
+.NET Core console template that provides a harnas for deploying your BPMN flows as resources to Camunda and build external task workers.
 
 [Camunda Business Process Engine](http://camunda.org)  [![Build Status](https://travis-ci.org/camunda/camunda-bpm-platform.svg?branch=master)](https://travis-ci.org/camunda/camunda-bpm-platform)  
 Workflow and Decision Automation Platform  
