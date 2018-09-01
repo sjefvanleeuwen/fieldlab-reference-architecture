@@ -3,6 +3,8 @@
 
 Reference Architecture for the Fieldlab. This system is composed of docker images from projects incubated in the lab. Some of the images support generic design patterns, while others are exact implementations of standards. Together they form a working system.
 
+Our main docker hub can be found on: https://hub.docker.com/
+
 ## Mission/Vision
 
 The primary goal of the lab is to provide a *low code* platform that can tackle real world problems from a user centric design perspective, quickly and effortlessly during Innovative Hackathons/FieldLabs and Design Sprints with multiple stakeholders.
@@ -49,7 +51,7 @@ For application performance management (APM). We evaluate opensource components 
 
 ## OpenID Connect and OAuth 2.0
 
-*TBA*
+Identity Server 4 is used for OpenID Connect. It uses the in memory-store option. The server should function for authentication/authorisation, Claims for user's and API's.
 
 ## Technical Overview
 Technical layers/overview of the docker images (in Dutch/Work in Progress):
@@ -58,12 +60,14 @@ Technical layers/overview of the docker images (in Dutch/Work in Progress):
 
 ## project references
 
-[Camunda Process Template](https://github.com/sjefvanleeuwen/camunda-process-template) 
-[![Build Status](https://travis-ci.org/sjefvanleeuwen/camunda-process-template.svg?branch=master)](https://travis-ci.org/sjefvanleeuwen/camunda-process-template)
+[OpenID Connect IdentityServer4](https://github.com/sjefvanleeuwen/identity-server)  
+This project dockerizes identityserver4.
 
+[Camunda Process Template](https://github.com/sjefvanleeuwen/camunda-process-template) 
+[![Build Status](https://travis-ci.org/sjefvanleeuwen/camunda-process-template.svg?branch=master)](https://travis-ci.org/sjefvanleeuwen/camunda-process-template)  
 .NET Core console template that provides a harnas for deploying your BPMN flows as resources to Camunda and build external task workers.
 
-[Camunda Business Process Engine](http://camunda.org)
+[Camunda Business Process Engine](http://camunda.org)  
 .NET Core console template that provides a harnas for deploying your BPMN flows as resources to Camunda and build external task workers.
 
 [Camunda Business Process Engine](http://camunda.org)  [![Build Status](https://travis-ci.org/camunda/camunda-bpm-platform.svg?branch=master)](https://travis-ci.org/camunda/camunda-bpm-platform)  
@@ -86,14 +90,11 @@ Generates documents from html into openxml standard.
 ## 5Layer Composition
 
 ```yaml
-version: '3.4'
-
-# 5Layer reference architecture and service implementations.
 services:
   # GEMMA ZDS Document Registratie OpenAPI
   drc:
     image: wigo4it/openapi-drc:alpha
-    hostname: zdc
+    hostname: drc
     ports:
       - "5094:5094"
   # GEMMA BRP Basis Registratie Personen OpenAPI (fake generator)
@@ -114,11 +115,18 @@ services:
     hostname: itp
     ports:
       - "5091:5091"
+  # SignalR Event hun, websocket event streaming
   signalr-event-hub:
     image: wigo4it/signalr-event-hub
     hostname: signalr-event-hub
     ports:
       - "5051:5051"
+  # OpenID Identityserver
+  identity-server:
+    image: wigo4it/identityserver4
+    hostname: identity-server
+    ports:
+      - "5099:80"
 ```
 
 ### Pull & Bring up the Images
