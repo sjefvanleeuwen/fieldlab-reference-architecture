@@ -4,7 +4,7 @@ services:
   # GEMMA ZDS Document Registratie OpenAPI
   drc:
     image: wigo4it/openapi-drc:alpha
-    hostname: zdc
+    hostname: drc
     ports:
       - "5094:5094"
   # GEMMA BRP Basis Registratie Personen OpenAPI (fake generator)
@@ -31,3 +31,9 @@ services:
     hostname: signalr-event-hub
     ports:
       - "5051:5051"
+  # OpenID Identityserver
+  identity-server:
+    image: wigo4it/identityserver4
+    hostname: identity-server
+    ports:
+      - "5099:80"
