@@ -1,6 +1,55 @@
-# fieldlab-reference-architecture
+# Innovative Fieldlab
+**under construction**
 
-Reference Architecture for Fieldlabs. This system is composed of docker images from other projects. Some of the images support generic design patterns, while others are exact implementations of standards. Together they form a working system.
+Reference Architecture for the Fieldlab. This system is composed of docker images from projects incubated in the lab. Some of the images support generic design patterns, while others are exact implementations of standards. Together they form a working system.
+
+## Mission/Vision
+
+The primary goal of the lab is to provide a *low code* platform that can tackle real world problems from a user centric design perspective, quickly and effortlessly during Innovative Hackathons/FieldLabs and Design Sprints with multiple stakeholders.
+
+## Open(source) standards
+
+### .NET Core / Standard
+
+A free, cross platform open source implementation of the managed .NET framework. The lab develops in .NET standard whenever possible as this version is a set of APIs that all .NET platforms have to implement. This unifies the .NET platforms and prevents future fragmentation.
+
+### Object Management Group (OMG) 
+
+The Object Management Group (OMG) is an international, open membership, not-for-profit technology standards consortium. OMG Task Forces develop enterprise integration standards for a wide range of technologies and industries.
+
+The lab implements the *“triple crown”* of process improvement standards. BPMN, DMN and CMMN modelling languages.
+
+#### BPMN
+
+To achieve process flexibility we design / model business processes in Business Process Model Notation and evaluate open source BPMN engines.  
+https://www.omg.org/bpmn/
+
+
+#### DMN
+
+Decision Model and Notation (DMN) is a standard approach for describing and modeling repeatable decisions within organizations to ensure that decision models are interchangeable across organizations.  
+https://www.omg.org/dmn/
+
+#### CMMN
+
+https://www.omg.org/cmmn/
+
+## OpenXML
+
+*TBA*
+
+## OpenAPM
+
+For application performance management (APM). We evaluate opensource components that provide means for:
+
+* Data Collection
+* Instrumentation
+* Transformation and Storage
+* Usage and Value Creation
+
+## OpenID Connect and OAuth 2.0
+
+*TBA*
 
 ## Technical Overview
 Technical layers/overview of the docker images (in Dutch/Work in Progress):
