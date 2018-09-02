@@ -34,6 +34,9 @@ services:
   # OpenID Identityserver
   identity-server:
     image: wigo4it/identityserver4
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     hostname: identity-server
     ports:
       - "5099:80"
+      
