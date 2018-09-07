@@ -39,4 +39,10 @@ services:
     hostname: identity-server
     ports:
       - "5099:80"
+  # Redis In Memory Key/Value Store
+  redis:
+    image: redis
+    hostname: redis
+    ports: 
+      - "6379:6379"
       
