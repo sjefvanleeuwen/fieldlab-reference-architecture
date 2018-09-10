@@ -67,9 +67,6 @@ This project dockerizes identityserver4.
 [![Build Status](https://travis-ci.org/sjefvanleeuwen/camunda-process-template.svg?branch=master)](https://travis-ci.org/sjefvanleeuwen/camunda-process-template)  
 .NET Core console template that provides a harnas for deploying your BPMN flows as resources to Camunda and build external task workers.
 
-[Camunda Business Process Engine](http://camunda.org)  
-.NET Core console template that provides a harnas for deploying your BPMN flows as resources to Camunda and build external task workers.
-
 [Camunda Business Process Engine](http://camunda.org)  [![Build Status](https://travis-ci.org/camunda/camunda-bpm-platform.svg?branch=master)](https://travis-ci.org/camunda/camunda-bpm-platform)  
 Workflow and Decision Automation Platform  
 Open source platform for workflow and decision automation that brings business users and software developers together.
@@ -131,16 +128,8 @@ services:
 
 ### Pull & Bring up the Images
 
-```powershell
-PS C:\Users\********\fieldlab-reference-architecture\compositions\5Layer> docker-compose pull
-Pulling drc               ... done
-Pulling brp               ... done
-Pulling camunda           ... done
-Pulling itp               ... done
-Pulling signalr-event-hub ... done
-Pulling identity-server   ... done
-Pulling redis             ... done
-PS C:\Users\********\fieldlab-reference-architecture\compositions\5Layer> docker-compose up -d
+```
+$ docker-compose up -d
 Creating 5layer_signalr-event-hub_1 ... done
 Creating 5layer_itp_1               ... done
 Creating 5layer_brp_1               ... done
@@ -148,7 +137,7 @@ Creating 5layer_camunda_1           ... done
 Creating 5layer_identity-server_1   ... done
 Creating 5layer_drc_1               ... done
 Creating 5layer_redis_1             ... done
-PS C:\Users\********\fieldlab-reference-architecture\compositions\5Layer> docker ps
+$ docker ps
 CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS              PORTS                              NAMES
 74cefb82c5c1        wigo4it/openapi-drc:alpha             "dotnet drc.dll"         2 minutes ago       Up 2 minutes        0.0.0.0:5094->5094/tcp             5layer_drc_1
 e5d0be01a8bf        redis                                 "docker-entrypoint.sâ€¦"   2 minutes ago       Up 2 minutes        0.0.0.0:6379->6379/tcp             5layer_redis_1
@@ -164,11 +153,23 @@ a904577e4f32        wigo4it/signalr-event-hub             "dotnet signalr-evenâ€
 Attach a shell (not your docker container Id for Redis instance might vary:
 
 ```
-docker exec -it e5d0be01a8bf39723c899de6ac6e602a7f71912b38de39929e67b33834c0582a /bin/sh
+$ docker exec -it e5d0be01a8bf39723c899de6ac6e602a7f71912b38de39929e67b33834c0582a /bin/sh
 # redis-cli -h localhost -p 6379 ping
 PONG
 #
 ```
+
+## Docker Container Managment (Portainer)
+
+If you like a GUI for your docker containers. Portainer is easy to setup:
+
+```
+$ docker volume create portainer_data
+$ docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+```
+
+![portainer](./doc/portainer.png)
+
 
 ## Contributing
 
