@@ -12,7 +12,7 @@ services:
     image: wigo4it/openapi-brp-fake
     hostname: brp
     ports:
-      - "5090:8080"
+      - "5080:5080"
   # Business Process Engine, Rule Engine and Case Management  
   camunda:
     image: camunda/camunda-bpm-platform:latest
