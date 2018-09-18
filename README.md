@@ -53,6 +53,15 @@ For application performance management (APM). We evaluate opensource components 
 
 Identity Server 4 is used for OpenID Connect. It uses the in memory-store option. The server should function for authentication/authorisation, Claims for user's and API's.
 
+## Other API's used:
+
+### IRMA (I Reveal My Attributes)
+
+IRMA offers a solution to log in in a privacy-friendly way. When logging in, you reveal as a user some relevant properties (attributes) of yourself, via an IRMA app on your own mobile phone.
+
+It does not need a public ledger, such as blockchain or a tangle to operate.
+
+
 ## Technical Overview
 Technical layers/overview of the docker images (in Dutch/Work in Progress):
 
@@ -84,9 +93,18 @@ Provides an OpenAPI service that serves a fake BRP (Basisregistratie Personen) i
 [OpenXML Document Generator](https://github.com/sjefvanleeuwen/openxml-document-generator)  ![travis build](https://travis-ci.com/sjefvanleeuwen/openxml-document-generator.svg?branch=master)  
 Generates documents from html into openxml standard.
 
+[IRMA (I Reveal My Attributes) API Server](https://travis-ci.org/privacybydesign/irma_api_server)  [![Build Status](https://travis-ci.org/privacybydesign/irma_api_server.svg?branch=master)](https://travis-ci.org/privacybydesign/irma_api_server)  
+This is a server that sits between IRMA tokens such as the IRMA app on the one hand, and authorized ser
+vice or identity providers on the other hand. It handles all IRMA-specific cryptographic details of issuing credentials and verifying disclosure proofs on behalf of the service or identity provider. It exposes a RESTful JSON API driven by JWTs for authentication.
+
+
 ## 5Layer Composition
 
+Here's the YAML file which composes the complete references architecture for deployment on your (development) system. Please note that the IRMA server contains a private key in the config for your convenience and should therefore **not be used in production environments**.
+
 ```yaml
+version: '3.4'
+
 services:
   # GEMMA ZDS Document Registratie OpenAPI
   drc:
@@ -121,9 +139,27 @@ services:
   # OpenID Identityserver
   identity-server:
     image: wigo4it/identityserver4
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     hostname: identity-server
     ports:
       - "5099:80"
+  # Redis In Memory Key/Value Store
+  redis:
+    image: redis
+    hostname: redis
+    ports: 
+      - "6379:6379"
+    # IRMA API Server
+  irma-api-server:
+    image: privacybydesign/irma_api_server
+    hostname: irma-api-server
+    ports:
+      - "8088:8080"
+    environment:
+      - IRMA_API_CONF_BASE64_JWT_PUBLICKEY=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxScmLzY25uKDaTldNn1cCKYOtwH5dxQtBo764zN0NZ4uwpTsq8Vyuc24LUBZMlYZfwjIDV41y9Nd2OUiDxgbEOaxVUIwJ8GQ4YEg+UdXmOeULxN0Ixdl7rM0HnRslGhu3UUbv9NBhWCBBewnA3Tr3oogzrznjDbW+JM7ahju169qAUDRM1iyhDwau87nK4/Zyjipdf0ZTWvnojlfvXpWsrSCiXYa/JSgo8wDz3kHyWO3sm1MHKFs5WZfG9J1On7ySqAzUzJOMhCt0m3hb8TimDho9nuhRkyjIl5IX7xAwJCSycCpHVVkhUY4G/+zwNb9ufSpld4JN09a0OuvtvTq0QIDAQAB
+      - IRMA_API_CONF_BASE64_JWT_PRIVATEKEY=MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDFJyYvNjbm4oNpOV02fVwIpg63Afl3FC0GjvrjM3Q1ni7ClOyrxXK5zbgtQFkyVhl/CMgNXjXL013Y5SIPGBsQ5rFVQjAnwZDhgSD5R1eY55QvE3QjF2XuszQedGyUaG7dRRu/00GFYIEF7CcDdOveiiDOvOeMNtb4kztqGO7Xr2oBQNEzWLKEPBq7zucrj9nKOKl1/RlNa+eiOV+9elaytIKJdhr8lKCjzAPPeQfJY7eybUwcoWzlZl8b0nU6fvJKoDNTMk4yEK3SbeFvxOKYOGj2e6FGTKMiXkhfvEDAkJLJwKkdVWSFRjgb/7PA1v259KmV3gk3T1rQ66+29OrRAgMBAAECggEAe6n21Z5YCbMDYrlMsqUnWXVvvXNLm1nYdEizLlhUCF3UTtFDMuuC7vEPGbNHP7+p9nj3owr5C4TlVOtE1dr0/0D08tm1gvpzej+ZA0OwuoRn+q9lJa3Djlpx0riMcvqer8Rth4Fnk9XYmHJsdkqcuNZDheoQA29SoFEZ7478IeUXAFyDRpS0EQlmUlTn5P4fEb8z3vSc7q2aY5wFUiaUKX0ugPK+777gi38h7fIwdNPY01k6jiF/97UcP/ANwt94aR3bu37mhuFeinVUi0tfjHo4LGL6P7exggK4sOQLLd2JIq3TEgMOmcALpx2LBFdXu7QjYd9wbzZwDx+aI0fQAQKBgQDzrQS6cQEGw60la1u85yi7g1Bca0RfyR+yYl6qH4H4rZGIXF9oTgZ9P0B46ZHwbgAekV+JKWZrPt26VBF1GyEo8fF6WJGQ/F1qw2Q5flMR2ueQIPrEFWA/g1TEFFVc6Fp2TS4xBtbWJg4FEbHu4xBycZYzUElqvD+So3nob6GukQKBgQDPH8b9Qcg5AYO6VD2xxAdwSBBlXZG3YQJknuVXGFQlbJRXuYxfnc3uUdb2DduK/sv18uH7mXRccJ8v/ucaKP+0t6AR+VdRFtzAzjKjoTwkPR4zcLkLaELk1/rgtokEKnWwE7UiBl1Fx3ntmK6OU5wr9UUiXMdyLJopV3g/RuoYQQKBgFRafbuI6QENdf/xJUXEg849y/DiVT4PYsCe2wRredO7Shj5WTHDaO2smsYAnTus6K+sRXU29rSDg8A/3/c5GAaTkrN2u5WEN1aBI03f1CPnMqgrMoP0nmf+L7bdDxvld4Nifm4MXwytCcdpc74troDfn05OKcwgNKWvn8D9++txAoGBAMXHXkgvLHXi0Fp4XoEE4uWAqsdgVeh5pcNXRz+nZ5Jk4DH0Z+pV0XKki1NhYCaVr0UnrEqH+ejbUeaOzTbZt3JldWA0bABuiFVDkG9XYwpnohMUrF4MLPRAmLtDEgr8UGzWJLxcv2wGUpNinCwkApinGGD7nyeTF5IqiBRELv0BAoGBAKUAFQLup+WiegQZBgplLje5wtu0fZs1rbDBG3dXEbwI1RHyMTx/Egt271+WwjcBVHKcYmHTOvdUmSzoRZJDrQpEB4EFEoUYYKlJ3+Udu8q5jcRzMs3KhTMfnriOKp6C3yRcfPcanhLfTpcTccHetUZRNxwgs9MK3LJh6pVScm+5
+
 ```
 
 ### Pull & Bring up the Images

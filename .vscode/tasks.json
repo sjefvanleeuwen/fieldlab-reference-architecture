@@ -1,0 +1,15 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "5Layer setup",
+            "type": "shell",
+            "command": "sudo ./compositions/5Layer/install.sh",
+            "windows": {
+                "command": ".\\ompositions\\5Layer\\install.sh"
+            },
+        }
+    ]
+}
