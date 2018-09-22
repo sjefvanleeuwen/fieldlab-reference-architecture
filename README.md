@@ -97,6 +97,8 @@ Generates documents from html into openxml standard.
 This is a server that sits between IRMA tokens such as the IRMA app on the one hand, and authorized ser
 vice or identity providers on the other hand. It handles all IRMA-specific cryptographic details of issuing credentials and verifying disclosure proofs on behalf of the service or identity provider. It exposes a RESTful JSON API driven by JWTs for authentication.
 
+[MINIO Object Storage Server](https://github.com/minio/minio)  
+Minio is an object storage server released under Apache License v2.0. It is compatible with Amazon S3 cloud storage service. It is best suited for storing unstructured data such as photos, videos, log files, backups and container / VM images. Size of an object can range from a few KBs to a maximum of 5TB.
 
 ## 5Layer Composition
 
@@ -150,7 +152,17 @@ services:
     hostname: redis
     ports: 
       - "6379:6379"
-    # IRMA API Server
+    # MINIO S3 Bucket Storage
+  minio:
+    image: minio/minio
+    hostname: minio
+    command: server /data
+    environment:
+      - MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE
+      - MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    ports:
+      - "9050:9000"
+  # IRMA API Server
   irma-api-server:
     image: privacybydesign/irma_api_server
     hostname: irma-api-server

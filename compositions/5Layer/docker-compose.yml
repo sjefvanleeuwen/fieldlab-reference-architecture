@@ -45,7 +45,17 @@ services:
     hostname: redis
     ports: 
       - "6379:6379"
-    # IRMA API Server
+  # MINIO S3 Bucket Storage
+  minio:
+    image: minio/minio
+    hostname: minio
+    command: server /data
+    environment:
+      - MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE
+      - MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    ports:
+      - "9050:9000"
+  # IRMA API Server
   irma-api-server:
     image: privacybydesign/irma_api_server
     hostname: irma-api-server

@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "sudo ./compositions/5Layer/install.sh",
             "windows": {
-                "command": ".\\ompositions\\5Layer\\install.sh"
+                "command": ".\\compositions\\5Layer\\install.sh"
             },
         }
     ]
