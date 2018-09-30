@@ -2,7 +2,9 @@
 
 ## Deployment script
 
-For easy deployment to azure, we have included a yaml script. These include the images from the field lab reference architectuyre that are found stable enough and don't need specific configuration ones deployed during your development sessions. For your own disto, please consider to change the dnslabelname to suit your own needs. **!NOTE this does not deploy a scalable kubernetes cluster and is meant to be a simple dev deployment.**
+For easy deployment to Azure, we have included a yaml script. These include the images from the field lab reference architecture that are found stable enough and don't need specific configuration ones deployed during your development sessions. For your own disto, please consider to change the dnslabelname to suit your own needs. **!NOTE this does not deploy a scalable kubernetes cluster and is meant to be a simple dev deployment.**
+
+For the Kubernetes cluster please go [here](./k8s.md)
 
 ```yaml
 apiVersion: 2018-06-01
