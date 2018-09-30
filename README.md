@@ -104,6 +104,9 @@ Minio is an object storage server released under Apache License v2.0. It is comp
 
 Here's the YAML file which composes the complete references architecture for deployment on your (development) system. Please note that the IRMA server contains a private key in the config for your convenience and should therefore **not be used in production environments**.
 
+For Azure container instances, please visit the following page:  
+[Container Group Deployment to Azure](./compositions/5Layer/readme.md)
+
 ```yaml
 version: '3.4'
 
