@@ -137,5 +137,29 @@ $ sudo apt install postgresql-client
 To check the synchronization status between the master / slave you can issue the following command:
 
 ```
-$ psql -h master -U postgres postgres -c 'table pg\_stat\_replication'
+$ psql -h master -U postgres postgres -c 'table pg_stat_replication'
 ```
+
+To test basic operation and replication, create data on the master node:
+
+```
+$ psql -h <external-ip-master> -U postgres postgres -c 'create table test (id int)'
+Password for user postgres:
+CREATE TABLE
+
+$ psql -h <external-ip-master> -U postgres postgres -c 'insert into test values(1)'
+Password for user postgres:
+INSERT 0 1
+
+psql -h <external-ip-replica> -U postgres postgres -c 'table foo'
+Password for user postgres:
+ id
+----
+  1
+(1 row)
+
+```
+
+As shown in the example session, you should see the replicated row appearing on the replica.
+
+A full description on the "Chart" can be found [here](./primary-replica/README.md).
