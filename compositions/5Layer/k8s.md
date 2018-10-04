@@ -1,4 +1,4 @@
-# Setup Kubernetes
+# Setup Kubernetes (AKS Azure)
 
 ## Setup your dashboard
 
