@@ -54,16 +54,12 @@ $ gofish install helm
 
 ```
 $ helm init
-
-cd crunchy-containers/examples/kubehelm
-
-helm install ./crunchy-postgres
 ```
 
 From within the ./postgresql-cluster directory (where this readme.md is located), issue the following command:
 
 ```
-$ helm isntall ./primary-replica
+$ helm install ./primary-replica
 ```
 
 This will install a primary postgresql for write puposes and one replica as the read only database for which you can scale to *n* replicas.
@@ -141,5 +137,5 @@ $ sudo apt install postgresql-client
 To check the synchronization status between the master / slave you can issue the following command:
 
 ```
-$ psql -h crunchy-master -U postgres postgres -c 'table pg\_stat\_replication'
+$ psql -h master -U postgres postgres -c 'table pg\_stat\_replication'
 ```
