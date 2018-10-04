@@ -1,4 +1,5 @@
 # PostgreSQL Cluster
+(On Microsoft AZURE AKS)
 
 As part of the persistent datalayer, the fieldlab uses the PostgreSQL RDBMS. In operation the database is a blackbox and agnostic from the ORM layer. We develop code first. In the code-first approach, EF Core API creates the database and tables using migration based on the conventions and configuration provided in your domain classes. This approach is useful in Domain Driven Design (DDD).
 
