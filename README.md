@@ -15,6 +15,10 @@ The primary goal of the lab is to provide a *low code* platform that can tackle 
 
 A free, cross platform open source implementation of the managed .NET framework. The lab develops in .NET standard whenever possible as this version is a set of APIs that all .NET platforms have to implement. This unifies the .NET platforms and prevents future fragmentation.
 
+### ODATA RESTful
+
+OData (Open Data Protocol) is an ISO/IEC approved, OASIS standard that defines a set of best practices for building and consuming RESTful APIs. OData RESTful APIs are easy to consume. The OData metadata, a machine-readable description of the data model of the APIs, enables the creation of powerful generic client proxies and tools.
+
 ### Object Management Group (OMG) 
 
 The Object Management Group (OMG) is an international, open membership, not-for-profit technology standards consortium. OMG Task Forces develop enterprise integration standards for a wide range of technologies and industries.
@@ -68,6 +72,9 @@ Technical layers/overview of the docker images (in Dutch/Work in Progress):
 ![5Layer](./doc/5layer.png)
 
 ## project references
+
+[OpenAPI / OData RESTful](https://github.com/wigo4it/template-webapi-nswag/tree/entity-framework)
+ODATA, the best way to RESTful. This project contains ODATA endpoint templates to write openapi services, supported by a rich ORM tool (Microsoft Entity Framework). It also integrates OpenAPM for performance logging and monitoring.
 
 [OpenID Connect IdentityServer4](https://github.com/sjefvanleeuwen/identity-server)  
 This project dockerizes identityserver4.
