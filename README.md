@@ -1,13 +1,13 @@
-# Innovative Fieldlab
+# Innovation Lab reference Architcture
 **under construction**
 
-Reference Architecture for the Fieldlab. This system is composed of docker images from projects incubated in the lab. Some of the images support generic design patterns, while others are exact implementations of standards. Together they form a working system.
+Reference Architecture for the innovation lab. This system is composed of docker images from projects incubated in the lab. Some of the images support generic design patterns, while others are exact implementations of standards. Together they form a working system.
 
 Our main docker hub can be found on: https://hub.docker.com/
 
 ## Mission/Vision
 
-The primary goal of the lab is to provide a *low code* platform that can tackle real world problems from a user centric design perspective, quickly and effortlessly during Innovative Hackathons/FieldLabs and Design Sprints with multiple stakeholders. Compared to other low code platforms, the building blocks used are community driven, open source and exhibits no compiler, codegenerator, nor infrastructure vendor lock-in. It achieves this by using open standards in its 5layer technical architecture.
+The primary goal of the lab is to provide a *low code* platform that can tackle real world problems from a user centric design perspective, quickly and effortlessly during Innovative Hackathons and Design Sprints with multiple stakeholders. Compared to other low code platforms, the building blocks used are community driven, open source and exhibits no compiler, codegenerator, nor infrastructure vendor lock-in. It achieves this by using open standards in its 5layer technical architecture.
 
 ## Ecosystem
 
