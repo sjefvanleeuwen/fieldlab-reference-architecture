@@ -9,6 +9,10 @@ Our main docker hub can be found on: https://hub.docker.com/
 
 The primary goal of the lab is to provide a *low code* platform that can tackle real world problems from a user centric design perspective, quickly and effortlessly during Innovative Hackathons/FieldLabs and Design Sprints with multiple stakeholders.
 
+## Ecosystem
+
+![eco-system](./doc/eco-system.jpg)
+
 ## Open(source) standards
 
 ### .NET Core / Standard
