@@ -11,7 +11,11 @@ The primary goal of the lab is to provide a *low code* platform that can tackle 
 
 ## Ecosystem
 
-![eco-system](./doc/eco-system.jpg)
+### Overview (Dutch)
+![eco-system](./doc/ecosystem.jpg)
+
+### Addendum (Dutch)
+![eco-system](./doc/ecosystem-addendum.jpg)
 
 ## Open(source) standards
 
