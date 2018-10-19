@@ -1,4 +1,4 @@
-# Innovation Lab reference Architcture
+# Innovation Lab reference Architecture
 **under construction**
 
 Reference Architecture for the innovation lab. This system is composed of docker images from projects incubated in the lab. Some of the images support generic design patterns, while others are exact implementations of standards. Together they form a working system.
