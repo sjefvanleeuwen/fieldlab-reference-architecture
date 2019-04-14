@@ -29,7 +29,7 @@ services:
   signalr-event-hub:
     image: wigo4it/signalr-event-hub
     hostname: signalr-event-hub
-    depennds_on:
+    depends_on:
       - redis
     environment: 
       - redis-host=redis
